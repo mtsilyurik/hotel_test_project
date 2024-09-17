@@ -24,7 +24,8 @@ public class Room {
 
     private String roomDescription;
 
-    @OneToMany
+//    @OneToMany
+    @ElementCollection
     private List<Booking> bookings = new ArrayList<>();
 
     @Override

@@ -35,7 +35,8 @@ public class User implements UserDetails {
     private String password;
     private String role;
 
-    @OneToMany
+//    @OneToMany
+    @ElementCollection
     private List<Booking> bookings = new ArrayList<>();
 
     @Override
