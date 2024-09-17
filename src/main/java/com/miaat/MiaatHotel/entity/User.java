@@ -2,6 +2,7 @@ package com.miaat.MiaatHotel.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,12 +32,12 @@ public class User implements UserDetails {
     @NotBlank(message="Phone number is required")
     private String phoneNumber;
 
-//    @Size(min=8)
+    @NotBlank(message="Password is required")
     private String password;
+
     private String role;
 
-//    @OneToMany
-    @ElementCollection
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // One user can have many bookings
     private List<Booking> bookings = new ArrayList<>();
 
     @Override
